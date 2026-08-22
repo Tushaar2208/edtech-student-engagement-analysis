@@ -2,21 +2,34 @@
 
 ### SQL • Python • Pandas • Power BI • SQLite
 
+**32,593 student-course records analyzed** · **40.56% early-disengagement rate among withdrawn students vs. 0.31% among students who passed** · 3-page interactive Power BI dashboard
+
 ---
 
 ## 📊 Dashboard
 
-[![Student Outcomes](https://github.com/Tushaar2208/edtech-student-engagement-analysis/raw/main/screenshots/01_student_outcomes.png)](https://github.com/Tushaar2208/edtech-student-engagement-analysis/blob/main/screenshots/01_student_outcomes.png)
+<p align="center">
+  <img src="https://github.com/Tushaar2208/edtech-student-engagement-analysis/raw/main/screenshots/03_early_warning.png" width="800" alt="Early Warning Dashboard">
+</p>
 
-[![Engagement & Performance](https://github.com/Tushaar2208/edtech-student-engagement-analysis/raw/main/screenshots/02_engagement_performance.png)](https://github.com/Tushaar2208/edtech-student-engagement-analysis/blob/main/screenshots/02_engagement_performance.png)
+<details>
+<summary><b>📁 View all 3 dashboard pages</b></summary>
+<br>
 
-[![Early Warning](https://github.com/Tushaar2208/edtech-student-engagement-analysis/raw/main/screenshots/03_early_warning.png)](https://github.com/Tushaar2208/edtech-student-engagement-analysis/blob/main/screenshots/03_early_warning.png)
+**Page 1 — Student Outcomes**
+![Student Outcomes](https://github.com/Tushaar2208/edtech-student-engagement-analysis/raw/main/screenshots/01_student_outcomes.png)
+
+**Page 2 — Engagement & Performance**
+![Engagement & Performance](https://github.com/Tushaar2208/edtech-student-engagement-analysis/raw/main/screenshots/02_engagement_performance.png)
+
+**Page 3 — Early Warning**
+![Early Warning](https://github.com/Tushaar2208/edtech-student-engagement-analysis/raw/main/screenshots/03_early_warning.png)
+
+</details>
 
 ---
 
 ## 📌 Project Overview
-
-[#-project-overview](#-project-overview)
 
 This project investigates how student engagement with an online learning platform relates to academic outcomes, and whether early disengagement can serve as a warning signal for students who eventually fail or withdraw. Using the **Open University Learning Analytics Dataset (OULAD)**, the analysis covers **32,593 student-course records** (~29K unique students) across four outcomes — Distinction, Pass, Fail, and Withdrawn.
 
@@ -25,8 +38,6 @@ This project investigates how student engagement with an online learning platfor
 ---
 
 ## 🗂 Dataset
-
-[#-dataset](#-dataset)
 
 Source: Open University Learning Analytics Dataset (OULAD)
 
@@ -39,19 +50,13 @@ Source: Open University Learning Analytics Dataset (OULAD)
 
 ## 🎯 Business Question
 
-[#-business-question](#-business-question)
-
 **Can early disengagement with the Virtual Learning Environment (VLE) serve as a useful warning signal for students who eventually fail or withdraw?**
 
 ---
 
 ## 📈 Key Insights
 
-[#-key-insights](#-key-insights)
-
 ### 1️⃣ Engagement Gradient Across Outcomes
-
-[#1️⃣-engagement-gradient-across-outcomes](#1️⃣-engagement-gradient-across-outcomes)
 
 | Outcome | Avg. Total Clicks | Avg. Active Days | Avg. Unique Resources | Avg. Clicks / Active Day |
 |---|---|---|---|---|
@@ -64,8 +69,6 @@ Engagement rises consistently from Withdrawn → Fail → Pass → Distinction. 
 
 ### 2️⃣ Engagement Persistence, Not Just Volume
 
-[#2️⃣-engagement-persistence-not-just-volume](#2️⃣-engagement-persistence-not-just-volume)
-
 | Outcome | Q1 Active | Q2 Active | Q3 Active | Q4 Active |
 |---|---|---|---|---|
 | Distinction | 99.80% | 99.70% | 99.93% | 99.77% |
@@ -77,8 +80,6 @@ Successful students stayed active near 99% through all four course phases. Withd
 
 ### 3️⃣ Assessment Performance Mirrors Engagement
 
-[#3️⃣-assessment-performance-mirrors-engagement](#3️⃣-assessment-performance-mirrors-engagement)
-
 | Outcome | Avg. Assessment Score | Avg. Assessments Completed |
 |---|---|---|
 | Distinction | 88.49 | 8.71 |
@@ -87,8 +88,6 @@ Successful students stayed active near 99% through all four course phases. Withd
 | Withdrawn | 29.50 | 1.29 |
 
 ### 4️⃣ Early Disengagement Is the Strongest Signal
-
-[#4️⃣-early-disengagement-is-the-strongest-signal](#4️⃣-early-disengagement-is-the-strongest-signal)
 
 A student was flagged as **early disengagement** if active in Q1 but showed zero recorded activity in Q2:
 
@@ -112,8 +111,6 @@ df["early_disengagement"] = (
 
 ## 💡 Potential Applications
 
-[#-potential-applications](#-potential-applications)
-
 - Flag students for early outreach when Q1 → Q2 activity drops to zero
 - Prioritize advisor check-ins for the Fail/Withdrawn risk band rather than treating all students uniformly
 - Track active days and course-phase persistence alongside raw click counts, not in place of them
@@ -123,11 +120,7 @@ df["early_disengagement"] = (
 
 ## ⚙️ Data Pipeline
 
-[#️-data-pipeline](#️-data-pipeline)
-
 ### 1️⃣ Data Exploration & Aggregation (SQL / SQLite)
-
-[#1️⃣-data-exploration--aggregation-sql--sqlite](#1️⃣-data-exploration--aggregation-sql--sqlite)
 
 - Explored schema, table sizes, and relationships across all 7 OULAD tables
 - Established the student + course module + course presentation grain (32,593 records ≠ unique students)
@@ -140,8 +133,6 @@ df["early_disengagement"] = (
 ---
 
 ### 2️⃣ Feature Engineering & Validation (Python / Pandas)
-
-[#2️⃣-feature-engineering--validation-python--pandas](#2️⃣-feature-engineering--validation-python--pandas)
 
 - Calculated engagement metrics: total clicks, active days, unique resources, clicks/active day
 - Built course-phase (Q1–Q4) activity and click fields
@@ -156,8 +147,6 @@ df["early_disengagement"] = (
 
 ### 3️⃣ Dashboard Development (Power BI)
 
-[#3️⃣-dashboard-development-power-bi](#3️⃣-dashboard-development-power-bi)
-
 - Built a 3-page dashboard: Student Outcomes → Engagement & Performance → Early Warning
 - Created DAX measures for pass/withdrawal/distinction rates, average engagement, and early disengagement rate
 - Added slicers for gender, age band, IMD band, and disability
@@ -169,11 +158,7 @@ df["early_disengagement"] = (
 
 ## 🛠 Tools & Skills Demonstrated
 
-[#-tools--skills-demonstrated](#-tools--skills-demonstrated)
-
 ### Tools
-
-[#tools](#tools)
 
 - SQL / SQLite
 - Python (Pandas)
@@ -182,8 +167,6 @@ df["early_disengagement"] = (
 - Git & GitHub
 
 ### Skills
-
-[#skills](#skills)
 
 - Data Cleaning & Transformation
 - Feature Engineering
@@ -197,8 +180,6 @@ df["early_disengagement"] = (
 
 ## 📋 Scope & Limitations
 
-[#-scope--limitations](#-scope--limitations)
-
 This project is descriptive analytics, not predictive modeling.
 
 **What it is:** engagement analysis, outcome segmentation, course-phase (longitudinal) analysis, an interpretable early-disengagement indicator, and an interactive BI dashboard.
@@ -210,8 +191,6 @@ The findings describe strong associations between engagement and outcomes — no
 ---
 
 ## 💼 Why This Project Matters
-
-[#-why-this-project-matters](#-why-this-project-matters)
 
 This project demonstrates the ability to:
 
